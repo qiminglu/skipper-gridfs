@@ -218,7 +218,7 @@ module.exports = function GridFSStore (globalOpts) {
             // into this receiver.  (filename === `__newFile.filename`).
             receiver__._write = function onFile(__newFile, encoding, done) {
                 // console.log('write fd:',__newFile.fd);
-                var fd = __newFile.fd;
+                var fd = __newFile.filename == undefined ? __newFile.fd : __newFile.filename;
 
 
                 receiver__.once('error', function (err, db) {
